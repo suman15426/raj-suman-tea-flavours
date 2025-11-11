@@ -10,3 +10,26 @@
 .animate-fade-in {
   animation: fade-in 1s ease-out forwards;
 }
+body {
+  font-family: 'Inter', sans-serif;
+}
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+}
+nav a {
+  color: #4b2e2e;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+nav a:hover {
+  background-color: #d4f1e3;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}

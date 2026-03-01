@@ -25,7 +25,7 @@ public class ProductController {
 
 	@PostMapping
 	public ResponseEntity<Product> addProduct(@RequestBody Product product) {
-	    Product saved = productRepository.save(product); // ✅ This saves it
+	    Product saved = productRepository.save(product); //  
 	    return ResponseEntity.ok(saved);
 	}
     

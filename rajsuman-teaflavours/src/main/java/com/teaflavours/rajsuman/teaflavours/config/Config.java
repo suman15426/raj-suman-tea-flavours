@@ -9,18 +9,23 @@ import org.springframework.security.web.SecurityFilterChain;
 
 
 @Configuration
+
 @EnableWebSecurity
 public class Config {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable())
-            .headers(headers -> headers.frameOptions(frame -> frame.disable()))
+        http
+            .csrf(csrf -> csrf.disable()) 
+            .headers(headers -> headers.frameOptions(frame -> frame.disable())) // allow H2 console if needed
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/", "/api/test", "/actuator/**").permitAll()
+                .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
+                .requestMatchers("/products/**").permitAll()
                 .anyRequest().authenticated()
             )
-            .httpBasic(Customizer.withDefaults());
+            .httpBasic(Customizer.withDefaults()); // enable basic auth for other endpoints
+
         return http.build();
     }
 }

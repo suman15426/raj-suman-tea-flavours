@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = "suman15426/raj-suman-tea-flavours:latest"
-        KUBE_CONFIG = credentials('kubeconfig-id') // store your kubeconfig in Jenkins credentials
+        
     }
 
     stages {
@@ -31,13 +31,7 @@ pipeline {
             }
         }
 
-        stage('Deploy to Kubernetes') {
-            steps {
-                script {
-                    sh 'kubectl apply -f k8s-deployment.yaml'
-                }
-            }
-        }
+        
     }
 
     post {
